@@ -1,0 +1,83 @@
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4">
+          <h4>Select Monthly Revenue</h4>
+          <label>January</label><br>
+          <input type="number" name="january" [(ngModel)]="months.jan" class="form-control" (keyup)="onMonthValueChange('jan')">
+          <br><br>
+          <label>February</label><br>
+          <input type="number" name="february" [(ngModel)]="months.feb" class="form-control" (keyup)="onMonthValueChange('feb')">
+          <br><br>
+          <label>March</label><br>
+          <input type="number" name="march" [(ngModel)]="months.march" class="form-control" (keyup)="onMonthValueChange('march')">
+          <br><br>
+        </div>
+        <div class="col-md-4">
+          <h4>Select Color</h4>
+          <label>Color</label><br>
+          <select name="janColor" [(ngModel)]="color.janColor" class="form-control" (change)="onColorChange()">
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Purple">Purple</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Blue">Blue</option>
+            <option value="Grey">Grey</option>
+            <option value="Orange">Orange</option>
+          </select>
+          <br><br>
+          <label>Color</label><br>
+          <select name="febColor" [(ngModel)]="color.febColor" class="form-control" (change)="onColorChange()">
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Purple">Purple</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Blue">Blue</option>
+            <option value="Grey">Grey</option>
+            <option value="Orange">Orange</option>
+          </select>
+          <br><br>
+          <label>Color</label><br>
+          <select name="marchColor" [(ngModel)]="color.marchColor" class="form-control" (change)="onColorChange()">
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Purple">Purple</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Blue">Blue</option>
+            <option value="Grey">Grey</option>
+            <option value="Orange">Orange</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <h4>Graph Type</h4>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="chartRadioButton" (click)="chartRadio('bar')" checked>
+        <label class="radios">Bar</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="chartRadioButton" (click)="chartRadio('pie')">
+        <label class="radios">Pie</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="chartRadioButton" (click)="chartRadio('line')">
+        <label class="radios">Line</label>
+      </div>
+      <br>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-8" *ngIf="isChartVisible">
+      <p>Market Qtr Report</p>
+      <canvas baseChart
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+      </canvas>
+    </div>
+  </div>
+  <br><br><br>
+</div>
